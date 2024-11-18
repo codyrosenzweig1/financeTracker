@@ -1,0 +1,66 @@
+<!-- index.html -->
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Personal Finance Tracker</title>
+    <link rel="stylesheet" href="/static/css/style.css"> <!-- Link to the CSS file -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-adapter-date-fns@latest"></script>
+    <script src="/static/js/transactions.js" defer></script> <!-- Link to JavaScript file -->
+</head>
+<body>
+    <h1>Personal Finance Tracker</h1>
+
+    <!-- Transaction Form -->
+    <form id="transactionForm">
+        <input type="number" id="amount" placeholder="Amount" required>
+        <input type="text" id="category" placeholder="Category" required>
+        <input type="text" id="description" placeholder="Description">
+        <button type="submit">Add Transaction</button>
+    </form>
+    
+    </br>
+    <hr>
+    </br>
+
+    <!-- Filter and sort options-->
+     <div id="filter-sort-options" >
+        <label for="categoryFilter">Filter by Category:</label>
+        <input type='text' id="categoryFilter" placeholder="Category">
+
+        <label for="sortOptions">Sort by:</label>
+        <select id="sortOptions">
+            <option value="date">Date</option>
+            <option value="amount">Amount</option>
+        </select>
+
+        <label for="startDate">From:</label>
+        <input type="date" id="startDate">
+        
+        <label for="endDate">To:</label>
+        <input type="date" id="endDate">
+
+        <button id="applyFilters">Apply Filters</button>
+     </div>
+
+    </br>
+
+     <div id="summarySection">
+        <h2>Summary Statistics</h2>
+        <div id="totalSpending">Total Spending: $0.00</div>
+        <div id="categorySummary"></div>
+     </div>
+
+    <!-- Section to Display Transactions -->
+    <div id="transactionList" class="transaction-grid">
+        <!-- Generate transactions in this div -->
+    </div>
+
+    <div id="chartsSection">
+        <h2>Spending Charts</h2>
+        <canvas id="spendingByCategoryChart"></canvas>
+        <canvas id="spendingOverTimeChart" width="400" height"200"></canvas>
+    </div>
+
+</body>
+</html>
