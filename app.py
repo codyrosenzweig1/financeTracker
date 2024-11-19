@@ -2,10 +2,14 @@ from flask import Flask, render_template
 from models import db, User, Transaction
 from routes.user_routes import user_routes
 from routes.transaction_routes import transaction_routes
+import os
+from dotenv import load_dotenv
+
+load_dotenv()
 
 app = Flask(__name__)
 
-app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://finance_user:Rose0402%40%40@localhost/finance_db'
+app.config['SQLALCHEMY_DATABASE_URI'] = f'postgresql://finance_user:{os.getenv('DATABASE_PASSWORD')}@localhost/finance_db'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
 db.init_app(app)
